@@ -21,10 +21,6 @@ let package = Package(
                 "Info.plist",
             ]
         ),
-        .target(
-            name: "PKHUD",
-            resources: [.copy("Resources")]
-        )
     ],
     swiftLanguageVersions: [.v5]
 )
