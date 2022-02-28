@@ -123,7 +123,10 @@ open class PKHUD: NSObject {
     open var trailingMargin: CGFloat = 0
 
     open func show(onView view: UIView? = nil) {
-        let view: UIView = view ?? viewToPresentOn ?? UIApplication.shared.keyWindow!
+        guard let view: UIView = view ?? viewToPresentOn ?? UIApplication.shared.keyWindow else {
+            debugPrint("Key window not found in the app. May be app transitioning through different windows. Hence no HUD will be displayed")
+            return
+        }
         if  !view.subviews.contains(container) {
             view.addSubview(container)
             container.frame.origin = CGPoint.zero
